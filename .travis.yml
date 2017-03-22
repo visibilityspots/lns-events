@@ -4,9 +4,6 @@ branches:
   - master
 install:
 - pip install -r requirements.txt
-before_script:
-- pelican-themes -i ./themes/pelican-bold
-- pelican-themes -l
 script:
 - make clean
 - make github_push

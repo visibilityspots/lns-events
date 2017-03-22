@@ -35,4 +35,4 @@ DEFAULT_PAGINATION = False
 #RELATIVE_URLS = True
 
 # Theme
-THEME = "pelican-bold"
+THEME = "themes/pelican-bold"
