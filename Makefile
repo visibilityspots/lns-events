@@ -70,15 +70,15 @@ aws-create:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(AWSPUBLISHCONF) $(PELICANOPTS)
 
 aws: aws-create
-        cd $(OUTPUTDIR)
-        s3cmd sync $(OUTPUTDIR)/ s3://$(S3_BUCKET) --exclude 'log/*' --acl-public --delete-removed --guess-mime->  \type -v
+	cd $(OUTPUTDIR)
+	s3cmd sync $(OUTPUTDIR)/ s3://$(S3_BUCKET) --exclude 'log/*' --acl-public --delete-removed --guess-mime -v
 
 github: github-create
-        cd $(INPUTDIR) && ghp-import -m 'Updating repository to real world blog' -n $(OUTPUTDIR) && git push origin gh-pages
+	cd $(INPUTDIR) && ghp-import -m 'Updating webpage' -n $(OUTPUTDIR) && git push origin gh-pages
 
 github-travis: github-create
-        ghp-import -n $(OUTPUTDIR)
-        @git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
+	ghp-import -n $(OUTPUTDIR)
+	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 
 .PHONY: html help clean regenerate serve devserver publish one.com aws github
 
