@@ -6,9 +6,9 @@ install:
 - pip install -r requirements.txt
 script:
 - make clean
-- make github_push
+- make github-travis
 - make clean
-- make aws
+- make aws-create
 deploy:
   provider: s3
   access_key_id: "$AWS_ACCESS_KEY"
@@ -21,7 +21,7 @@ deploy:
   detect_encoding: true
 notifications:
   email:
-    on_failure: always
+    on_failure: change
     on_success: change
 env:
   global:
