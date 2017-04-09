@@ -4,7 +4,7 @@ Heading: L&S Events
 Subheading: Light and Sound events
 Status: published
 
-L&S Events kan voor elk evenement van klein tot groot voorzien in licht en geluid.
+L&S Events kan voor elk evenement ongeacht de grootte, een klein verjaardags/communie feest tot grote fuiven voorzien van licht en geluid.
 
 Vraag vrijblijvend een offerte aan door te mailen of te bellen.
 
@@ -14,3 +14,5 @@ Vermeld zeker :
 * Geschat aantal bezoekers
 * Richtbudget
 * Speciale vereisten
+
+Wij nemen dan zo snel mogelijk contact met jullie op om hopelijk tot een fijne samenwerking over te gaan!
