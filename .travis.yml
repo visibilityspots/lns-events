@@ -19,6 +19,10 @@ deploy:
   local-dir: output
   acl: public_read
   detect_encoding: true
+  cache_control: "max-age=21600"
+after_deploy:
+  - aws configure set preview.cloudfront
+  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
 notifications:
   email:
     on_failure: change
