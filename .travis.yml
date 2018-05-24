@@ -7,25 +7,7 @@ install:
 script:
 - make clean
 - make github-travis
-- make clean
-- make aws-create
-deploy:
-  provider: s3
-  access_key_id: "$AWS_ACCESS_KEY_ID"
-  secret_access_key: "$AWS_SECRET_ACCESS_KEY"
-  bucket: lns-events.be
-  region: eu-west-1
-  skip_cleanup: true
-  local-dir: output
-  acl: public_read
-  cache_control: "max-age=21600"
-after_deploy:
-  - aws configure set preview.cloudfront true
-  - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
 notifications:
   email:
     on_failure: change
     on_success: change
-env:
-  global:
-    secure: PSL1hX/XPet+ytO99S9OCjibJ9krlx1wYg0ap2GiNSHJi9VoIepdg62BqqjYUyjna/NcKzSsSpvRZ+1fEVMQIdMVn/uL3+YWQySzoO7ZJVXinLcLAzRyKP4Vf0T9ppYInGCX5YLdonKgvmFvgLsgCJoXzX1HUJxmB9fnNNrWQC+crzaQ5gENaRr1cNUGPEVGUzDV3JETXq2QTGDBwoXGNkotlBjUIXr5Cs+dP/TcjZlgBwR50ZH//3Dc4MMR0ijE967cUOXXE5C1au0UG85znTWFq4K5audPrKC+IsZVWH/urFQ07hvq0xx1BB9c/Wrd3C1Q1Fgg7qVO+OvoDPQQ282iDnCdlnWsW0SumgImz3LeizXH20NPCdD0MTjBwxWulE+KbsOGY1l3108eBTT65msI0CO+a4Rp6MYU1cZ6kNRZYbzXCaU7hM4WGEV+u1WcKbO0e+w0BRPIg4oO28tLUlmadGcggaqmSAcA5xtROGyrC/DladquQeERaw7C8ghDooa3YRY5trkno7LdraUzuAMe913poBCpDbA5pkj3eDm6cfwlteJOX1VfXinrUQIA5AkUP+QZB5mwc/K6TgFhEBm9yQpSao8VfPpSVVNOdlmGAucJ5zz8bsIg/XGNZ3IqIUKJYoDEYKqCsswAdwTOn78o7fXP+JTuOF6OStULAFM=

@@ -9,9 +9,6 @@ CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
 GITHUBPUBLISHCONF=$(BASEDIR)/github_publishconf.py
-AWSPUBLISHCONF=$(BASEDIR)/aws_publishconf.py
-
-S3_BUCKET=lns-events.be
 
 GITHUB_PAGES_BRANCH=master
 
@@ -65,13 +62,6 @@ github-create:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(GITHUBPUBLISHCONF) $(PELICANOPTS)
 
-aws-create:
-	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(AWSPUBLISHCONF) $(PELICANOPTS)
-
-aws: aws-create
-	cd $(OUTPUTDIR)
-	s3cmd sync $(OUTPUTDIR)/ s3://$(S3_BUCKET) --exclude 'log/*' --acl-public --delete-removed --guess-mime -v
 
 github: github-create
 	cd $(INPUTDIR) && ghp-import -m 'Updating webpage' -n $(OUTPUTDIR) && git push origin gh-pages
