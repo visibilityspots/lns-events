@@ -67,7 +67,7 @@ github: github-create
 	cd $(INPUTDIR) && ghp-import -c lns-events.be -m 'Updating webpage' -n $(OUTPUTDIR) && git push origin gh-pages
 
 github-travis: github-create
-	ghp-import -n $(OUTPUTDIR)
+	ghp-import -c lns-events.be -n $(OUTPUTDIR)
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 
 .PHONY: html help clean regenerate serve devserver publish one.com aws github
