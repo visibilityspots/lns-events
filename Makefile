@@ -64,7 +64,7 @@ github-create:
 
 
 github: github-create
-	cd $(INPUTDIR) && ghp-import -m 'Updating webpage' -n $(OUTPUTDIR) && git push origin gh-pages
+	cd $(INPUTDIR) && ghp-import -c lns-events.be -m 'Updating webpage' -n $(OUTPUTDIR) && git push origin gh-pages
 
 github-travis: github-create
 	ghp-import -n $(OUTPUTDIR)
