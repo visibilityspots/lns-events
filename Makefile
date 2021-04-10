@@ -58,13 +58,13 @@ publish:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
-github-create:
+github-build:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(GITHUBPUBLISHCONF) $(PELICANOPTS)
 
 
-github: github-create
-	cd $(INPUTDIR) && ghp-import -c lns-events.be -m 'Updating webpage' -n $(OUTPUTDIR) && git push origin gh-pages
+github: github-build
+	cd $(INPUTDIR) && ghp-import -c lns-events.be -m 'Updating webpage' -n $(OUTPUTDIR)
 
 github-travis: github-create
 	ghp-import -c lns-events.be -n $(OUTPUTDIR)
