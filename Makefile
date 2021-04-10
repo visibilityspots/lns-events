@@ -62,13 +62,8 @@ github-build:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(GITHUBPUBLISHCONF) $(PELICANOPTS)
 
-
 github: github-build
 	cd $(INPUTDIR) && ghp-import -c lns-events.be -m 'Updating webpage' -n $(OUTPUTDIR)
-
-github-travis: github-create
-	ghp-import -c lns-events.be -n $(OUTPUTDIR)
-	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 
 .PHONY: html help clean regenerate serve devserver publish one.com aws github
 
